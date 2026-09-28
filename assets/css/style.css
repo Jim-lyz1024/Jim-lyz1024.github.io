@@ -265,8 +265,8 @@ h2 .full-list:hover { color: var(--accent-hover); }
 
 .profile {
   float: right;
-  width: 30%;
-  max-width: 300px;
+  width: 22%;
+  max-width: 225px;
   margin: 4px 0 16px 32px;
 }
 
@@ -601,7 +601,7 @@ h2.year {
 
   .profile {
     float: none;
-    width: 200px;
+    width: 160px;
     margin: 0 auto 24px;
   }
 
