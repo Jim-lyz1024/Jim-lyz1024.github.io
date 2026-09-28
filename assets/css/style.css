@@ -1,39 +1,62 @@
 /* Homepage of Yuzhuo Li.
-   All colours are the custom properties below; dark mode follows the visitor's system setting. */
+   Colours follow the two al-folio schemes: light (white/black) and dark (#1c1c1d/#e8e8e8).
+   The theme is set on <html data-theme> by the inline script in each page's <head>. */
 
 :root {
-  --paper: #fbfaf6;
-  --ink: #1c1c1a;
-  --ink-soft: #3b3a36;
-  --muted: #6c6a62;
-  --rule: #e3e0d6;
-  --accent: #1f5f45;
-  --accent-line: rgba(31, 95, 69, 0.35);
-  --code-bg: #f3f1ea;
-  --select: rgba(31, 95, 69, 0.16);
-
-  --serif: "Source Serif 4", "Source Serif Pro", Georgia, Cambria, "Times New Roman", serif;
-  --sans: "Source Sans 3", "Source Sans Pro", -apple-system, "Segoe UI", system-ui, sans-serif;
-  --zh: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  --mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, Consolas, monospace;
-
-  --measure: 46rem;  /* page width, padding included */
-  --gutter: 7rem;    /* the left column that holds dates and venues */
-
-  color-scheme: light dark;
+  --bg: #fff;
+  --text: #000;
+  --text-muted: #666;
+  --text-faint: #c9c9c9;
+  --theme: rgba(42, 39, 220, 0.82);
+  --hover: #b509ac;
+  --divider: rgba(0, 0, 0, 0.1);
+  --box-border: #ddd;
+  --code-bg: rgba(181, 9, 172, 0.05);
+  --abbr: rgba(42, 39, 220, 0.42);
+  --footer-bg: #1c1c1d;
+  --footer-text: #e8e8e8;
+  --shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  --scroll-thumb: #c1c1c1;
+  --scroll-track: #f3f3f3;
+  --nav-h: 56px;
+  --footer-h: 35px;
+  color-scheme: light;
 }
 
+html[data-theme="dark"] {
+  --bg: #1c1c1d;
+  --text: #e8e8e8;
+  --text-muted: #a3a3a3;
+  --text-faint: #48484c;
+  --theme: #2698ba;
+  --hover: #2698ba;
+  --divider: #424246;
+  --box-border: #424246;
+  --code-bg: #2c3237;
+  --footer-bg: #e8e8e8;
+  --footer-text: #1c1c1d;
+  --scroll-thumb: #55555a;
+  --scroll-track: #26262a;
+  color-scheme: dark;
+}
+
+/* Without JavaScript there is no data-theme attribute, so fall back to the system setting. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #151513;
-    --ink: #e7e5de;
-    --ink-soft: #cdcac1;
-    --muted: #9b988e;
-    --rule: #2e2d29;
-    --accent: #8fcfaa;
-    --accent-line: rgba(143, 207, 170, 0.4);
-    --code-bg: #1d1d1a;
-    --select: rgba(143, 207, 170, 0.22);
+  html:not([data-theme]) {
+    --bg: #1c1c1d;
+    --text: #e8e8e8;
+    --text-muted: #a3a3a3;
+    --text-faint: #48484c;
+    --theme: #2698ba;
+    --hover: #2698ba;
+    --divider: #424246;
+    --box-border: #424246;
+    --code-bg: #2c3237;
+    --footer-bg: #e8e8e8;
+    --footer-text: #1c1c1d;
+    --scroll-thumb: #55555a;
+    --scroll-track: #26262a;
+    color-scheme: dark;
   }
 }
 
@@ -44,395 +67,555 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.62;
-  font-optical-sizing: auto;
-  font-variant-numeric: oldstyle-nums;
-  text-rendering: optimizeLegibility;
+  padding: calc(var(--nav-h) + 40px) 0 calc(var(--footer-h) + 48px);
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
 }
-
-::selection { background: var(--select); }
 
 a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-line);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  transition: text-decoration-color 0.15s;
-}
-
-a:hover { text-decoration-color: currentColor; }
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-  text-wrap: balance;
-}
-
-p { text-wrap: pretty; }
-
-.skip {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-}
-
-.skip:focus {
-  left: 1rem;
-  top: 1rem;
-  z-index: 10;
-  padding: 0.4rem 0.7rem;
-  background: var(--paper);
-}
-
-/* ---------- Page frame ---------- */
-
-.page {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.topnav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.25rem 1.4rem;
-  padding-top: 1.6rem;
-  font-family: var(--sans);
-  font-size: 0.92rem;
-}
-
-.topnav a {
-  color: var(--muted);
+  color: var(--theme);
   text-decoration: none;
 }
 
-.topnav a:hover { color: var(--ink); }
-
-section { scroll-margin-top: 1.5rem; }
-
-section + section {
-  margin-top: 3.25rem;
-  padding-top: 2.25rem;
-  border-top: 1px solid var(--rule);
+a:hover {
+  color: var(--hover);
+  text-decoration: underline;
 }
+
+b, strong { font-weight: 500; }
+
+:focus-visible {
+  outline: 2px solid var(--theme);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+}
+
+/* ---------- Navigation bar ---------- */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  border-bottom: 1px solid var(--divider);
+  background: var(--bg);
+  transition: background-color 0.2s;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.brand {
+  margin-right: auto;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.brand b { font-weight: 700; }
+
+.brand:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-links a {
+  padding: 8px 10px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--theme);
+  text-decoration: none;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.icon-btn:hover { color: var(--theme); }
+
+.theme-toggle { margin-left: 6px; }
+
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+.nav-toggle { display: none; }
+
+@media (max-width: 575.98px) {
+  .nav-toggle {
+    display: inline-grid;
+    margin-left: 4px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 6px 15px 12px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--bg);
+  }
+
+  .navbar.nav-open .nav-links { display: flex; }
+
+  .nav-links a { padding: 10px 0; }
+
+  .theme-toggle { margin: 4px 0 0 -8px; }
+}
+
+/* ---------- Page headers ---------- */
+
+.post-header { margin-bottom: 24px; }
+
+.post-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.post-title b { font-weight: 700; }
+
+.post-description {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+}
+
+.desc { margin: 8px 0 0; }
 
 h2 {
-  margin: 0 0 1.1rem;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  letter-spacing: -0.005em;
+  margin: 40px 0 16px;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
-.section-note {
-  margin: -0.55rem 0 1.2rem;
-  color: var(--muted);
-  font-size: 0.95rem;
+h2 a,
+h2 a:hover { color: inherit; }
+
+h2 .full-list {
+  margin-left: 8px;
+  font-size: 0.6em;
+  color: var(--theme);
 }
 
-/* ---------- Intro ---------- */
+h2 .full-list:hover { color: var(--hover); }
 
-.intro { padding-top: 3.5rem; }
+/* ---------- About ---------- */
 
-.intro::after {
+.profile {
+  float: right;
+  width: 30%;
+  max-width: 300px;
+  margin: 4px 0 16px 32px;
+}
+
+.profile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+.bio p { margin: 0 0 16px; }
+
+.bio ul {
+  margin: 0 0 16px;
+  padding-left: 1.4em;
+}
+
+.bio li { margin-bottom: 2px; }
+
+.clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
 
-.portrait {
-  float: right;
-  width: 11.5rem;
-  margin: 0.4rem 0 1rem 2.25rem;
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 2.1rem;
 }
 
-.portrait img {
+.social a {
   display: block;
+  color: var(--text);
+  line-height: 1;
+}
+
+.social a:hover { color: var(--theme); }
+
+/* ---------- Scrolling boxes (News, Papers) ---------- */
+
+.scroll-box {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.scroll-box::-webkit-scrollbar { width: 10px; }
+.scroll-box::-webkit-scrollbar-track { background: var(--scroll-track); }
+
+.scroll-box::-webkit-scrollbar-thumb {
+  border: 2px solid var(--scroll-track);
+  border-radius: 6px;
+  background: var(--scroll-thumb);
+}
+
+/* Firefox has no ::-webkit-scrollbar; give it the standard properties instead. */
+@supports not selector(::-webkit-scrollbar) {
+  .scroll-box { scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
+}
+
+.news-box { max-height: 300px; }
+
+.news table {
   width: 100%;
-  height: auto;
-  border-radius: 3px;
+  border-collapse: collapse;
 }
 
-h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  line-height: 1.15;
-  letter-spacing: -0.012em;
+.news th,
+.news td {
+  padding: 9px 5px;
+  vertical-align: top;
+  text-align: left;
 }
 
-h1 .zh {
-  margin-left: 0.12em;  /* the space before it does most of the work, so a wrapped line gets no visible indent */
-  font-family: var(--zh);
-  font-size: 0.6em;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--muted);
+.news th {
+  width: 12%;
+  min-width: 92px;
+  font-weight: 300;
   white-space: nowrap;
 }
 
-.role {
-  margin: 0.6rem 0 0;
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  line-height: 1.5;
+/* Short enough that the list scrolls (with its bar on the right) even while there are only a few papers. */
+.papers-box {
+  max-height: 420px;
+  margin-top: 15px;
+  padding: 10px 10px 0;
+  border: 1px solid var(--box-border);
 }
 
-.contact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem 0.95rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--sans);
-  font-size: 0.95rem;
-}
+/* ---------- Publication entries ---------- */
 
-.bio { margin-top: 1.8rem; }
-
-.bio p { margin: 0 0 1em; }
-
-.bio p:last-child { margin-bottom: 0; }
-
-/* ---------- Dated lists: news, publications, CV ---------- */
-
-.entries {
+.bibliography {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.entry {
+.bibliography > li { margin-bottom: 20px; }
+
+.pub {
   display: grid;
-  grid-template-columns: var(--gutter) minmax(0, 1fr);
-  column-gap: 1.25rem;
-  align-items: baseline;
-  padding: 0.38rem 0;
+  grid-template-columns: 150px minmax(0, 1fr);
+  column-gap: 30px;
 }
 
-.entry p { margin: 0; }
-
-.when {
-  font-family: var(--sans);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-variant-numeric: lining-nums tabular-nums;
-  color: var(--muted);
-}
-
-.when .venue { color: var(--ink-soft); }
-
-/* ---------- Publications ---------- */
-
-.pub { padding: 1rem 0; }
-
-.pub + .pub { border-top: 1px dotted var(--rule); }
-
-.pub-title {
-  margin: 0 0 0.3rem;
-  font-size: 1.08rem;
-  line-height: 1.38;
-}
-
-.pub-title a {
-  color: var(--ink);
+.badge {
+  display: block;
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: var(--abbr);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
   text-decoration: none;
 }
 
-.pub-title a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-line);
+.preview {
+  display: block;
+  margin-top: 8px;
+  cursor: zoom-in;
 }
 
-.authors,
-.venue-full,
-.summary { font-size: 0.98rem; }
-
-.authors { color: var(--ink-soft); }
-
-.authors .me {
-  font-weight: 600;
-  color: var(--ink);
+.preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: var(--shadow);
 }
 
-.pub .venue-full {
-  margin-top: 0.1rem;
-  color: var(--muted);
+.pub .title { font-weight: 400; }
+
+.pub .author .me {
+  border-bottom: 1px solid;
+  font-style: normal;
 }
 
-.pub .summary {
-  margin-top: 0.45rem;
-  color: var(--ink-soft);
-}
-
-.links {
+.pub .links {
   display: flex;
   flex-wrap: wrap;
-  margin: 0.5rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  gap: 6px;
+  margin-top: 6px;
 }
 
-/* The separator trails each item, so a wrapped row never starts with a slash. */
-.links li:not(:last-child)::after {
-  content: "/";
-  margin: 0 0.5em;
-  color: var(--muted);
-  opacity: 0.55;
-}
-
-.bib-toggle {
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: var(--accent);
+.btn {
+  display: inline-block;
+  padding: 3px 14px;
+  border: 1px solid var(--text);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text);
+  font: 400 0.66rem/1.6 "Roboto", sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: var(--accent-line);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
 }
 
-.bib-toggle:hover,
-.bib-toggle[aria-expanded="true"] { text-decoration-color: currentColor; }
-
-.bib {
-  position: relative;
-  margin-top: 0.75rem;
+.btn:hover,
+.btn[aria-expanded="true"] {
+  border-color: var(--theme);
+  color: var(--theme);
+  text-decoration: none;
 }
 
-.bib pre {
+.abstract,
+.bibtex { margin-top: 10px; }
+
+.abstract p {
   margin: 0;
-  padding: 0.85rem 1rem;
+  padding: 8px 12px;
+  border: 1px dashed var(--text-muted);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.bibtex { position: relative; }
+
+.bibtex pre {
+  margin: 0;
+  padding: 10px 12px;
   overflow-x: auto;
-  border-left: 2px solid var(--accent-line);
+  border-radius: 4px;
   background: var(--code-bg);
-  color: var(--ink-soft);
-  font: 0.78rem/1.55 var(--mono);
+  font: 0.78rem/1.55 ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, Consolas, monospace;
   white-space: pre;
 }
 
-.bib-copy {
+.copy {
   position: absolute;
-  top: 0.45rem;
-  right: 0.55rem;
-  padding: 0.1rem 0.45rem;
-  border: 1px solid var(--rule);
+  top: 6px;
+  right: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--box-border);
   border-radius: 3px;
-  background: var(--paper);
-  color: var(--muted);
-  font: 500 0.75rem var(--sans);
+  background: var(--bg);
+  color: var(--text-muted);
+  font: 400 0.72rem "Roboto", sans-serif;
   cursor: pointer;
 }
 
-.bib-copy:hover { color: var(--ink); }
+.copy:hover { color: var(--text); }
+
+.pub-note {
+  margin: 0 0 8px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Year headings on the full list, as in al-folio */
+h2.year {
+  margin: 32px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--divider);
+  color: var(--text-faint);
+  text-align: right;
+}
+
+@media (max-width: 575.98px) {
+  .pub { grid-template-columns: minmax(0, 1fr); }
+
+  .badge {
+    display: inline-block;
+    min-width: 72px;
+  }
+
+  .preview {
+    max-width: 260px;
+    margin-bottom: 8px;
+  }
+}
+
+/* ---------- Simple lists: Services, Teaching ---------- */
+
+.plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plain-list li { margin-bottom: 12px; }
+
+.plain-list .when { font-weight: 400; }
 
 /* ---------- CV ---------- */
 
+.cv-item { margin-bottom: 20px; }
+
 .cv-head {
-  margin: 1.7rem 0 0.35rem;
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 16px;
 }
 
-h2 + .cv-head { margin-top: 0; }
+.cv-title { font-weight: 500; }
 
-.detail {
-  color: var(--muted);
-  font-size: 0.96rem;
+.cv-date {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cv-sub { color: var(--text-muted); }
+
+.cv-item ul {
+  margin: 4px 0 0;
+  padding-left: 1.3em;
 }
 
 /* ---------- Footer ---------- */
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  margin-top: 4rem;
-  padding: 1.4rem 0 2.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 0.86rem;
+  align-items: center;
+  height: var(--footer-h);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  font-size: 12px;
+  text-align: center;
 }
-
-.footer p { margin: 0; }
 
 .footer a { color: inherit; }
 
-/* ---------- Small screens ---------- */
+/* ---------- Figure zoom ---------- */
 
-@media (max-width: 36rem) {
-  :root { --gutter: 5.4rem; }
-
-  body { font-size: 1rem; }
-
-  .page { padding: 0 1.25rem; }
-
-  .topnav {
-    justify-content: flex-start;
-    gap: 0.2rem 1.15rem;
-    padding-top: 1.1rem;
-  }
-
-  .intro { padding-top: 2rem; }
-
-  /* Beside the text the column gets too narrow on a phone, so the photo sits above the name. */
-  .portrait {
-    float: none;
-    display: block;
-    width: 8.5rem;
-    margin: 0 0 1.25rem;
-  }
-
-  h1 { font-size: 2rem; }
-
-  .role { font-size: 1rem; }
-
-  .entry { column-gap: 1rem; }
-
-  /* Venue labels are too wide for the narrow gutter, so publications stack. */
-  .pub { grid-template-columns: minmax(0, 1fr); }
-
-  .pub .when { margin-bottom: 0.2rem; }
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: zoom-out;
 }
 
-/* ---------- Print ---------- */
+.zoom-overlay[hidden] { display: none; }
+
+.zoom-overlay img {
+  max-width: min(1400px, 100%);
+  max-height: 100%;
+  border-radius: 4px;
+  background: #fff;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 767.98px) {
+  body { padding-top: calc(var(--nav-h) + 24px); }
+
+  .post-title { font-size: 2.1rem; }
+
+  .profile {
+    float: none;
+    width: 200px;
+    margin: 0 auto 24px;
+  }
+
+  h2 { font-size: 1.75rem; }
+
+  .news th { width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, .navbar { transition: none; }
+}
 
 @media print {
-  .topnav, .skip, .bib-toggle, .bib-copy { display: none; }
+  .navbar, .footer, .links, .theme-toggle, .zoom-overlay { display: none !important; }
 
-  body { font-size: 10.5pt; }
+  body { padding: 0; }
 
-  a { color: inherit; text-decoration: none; }
-
-  .pub { break-inside: avoid; }
+  .scroll-box {
+    max-height: none;
+    overflow: visible;
+  }
 }

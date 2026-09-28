@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services | Yuzhuo Li</title>
+  <meta name="description" content="Academic service of Yuzhuo Li.">
+  <link rel="canonical" href="https://jim-lyz1024.github.io/services/">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="/"><b>Yuzhuo</b> Li</a>
+      <nav class="nav-links" id="nav-links" aria-label="Main">
+        <a href="/">About</a>
+        <a href="/publications/">Publications</a>
+        <a href="/services/" aria-current="page">Services</a>
+        <a href="/teaching/">Teaching</a>
+        <a href="/cv/">CV</a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"/></svg>
+        </button>
+      </nav>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <header class="post-header">
+      <h1 class="post-title">Services</h1>
+    </header>
+
+    <p><strong>Conference Reviewer</strong></p>
+    <ul>
+      <li>AAAI Conference on Artificial Intelligence (AAAI), 2026</li>
+      <li>European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML-PKDD), 2025</li>
+      <li>The ACM Web Conference (WWW), 2025</li>
+      <li>ACM International Conference on Multimedia (ACM MM), 2024</li>
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; Copyright 2026 Yuzhuo Li.</div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
