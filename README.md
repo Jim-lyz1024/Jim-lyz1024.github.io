@@ -3,7 +3,7 @@
 Personal homepage of Yuzhuo Li, served by GitHub Pages at <https://jim-lyz1024.github.io/>.
 
 Plain HTML/CSS with a little JavaScript and no build step; `.nojekyll` makes GitHub Pages serve
-the files as they are. The look follows the al-folio academic theme (light and dark schemes).
+the files as they are. Light and dark schemes; the accent colour is University of Auckland blue.
 
 | Path | Page |
 |------|------|
@@ -20,9 +20,10 @@ the files as they are. The look follows the al-folio academic theme (light and d
 ## Updating
 
 - **News:** add a `<tr>` at the top of the News table in `index.html`.
-- **Paper:** copy a whole `<li>` in `publications/index.html` **and** in the Papers box of
-  `index.html` (the two lists are kept in sync by hand). Give the Abs/Bib panel ids a new suffix;
-  each `data-panel` button points at its panel's `id`.
+- **Paper:** copy a whole `<li class="pub">` block into `publications/index.html` (under its year)
+  **and** into the Papers box of `index.html`; the two copies are identical. Give it a new `id`,
+  and matching `abs-<id>` / `bib-<id>` panel ids (each `data-panel` button points at its panel).
+  The figure is `assets/img/pubs/<name>.webp` (shown on click) plus `<name>-thumb.webp` (360 px wide).
 - **Navigation:** the menu is repeated in every page's `<header class="navbar">`.
 
 All links use root paths (`/assets/...`, `/cv/`), so preview through a local server rather than

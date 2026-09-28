@@ -49,7 +49,7 @@
     button.setAttribute('aria-controls', panel.id);
     button.addEventListener('click', function () {
       var open = panel.hidden;
-      button.closest('.links').querySelectorAll('button[data-panel]').forEach(function (other) {
+      button.closest('.pub-links').querySelectorAll('button[data-panel]').forEach(function (other) {
         var otherPanel = document.getElementById(other.dataset.panel);
         if (otherPanel) otherPanel.hidden = true;
         other.setAttribute('aria-expanded', 'false');
@@ -91,7 +91,7 @@
   });
 
   // ----- Click a paper thumbnail to see the full figure -----
-  var previews = document.querySelectorAll('a.preview');
+  var previews = document.querySelectorAll('a.pub-fig');
   if (previews.length) {
     var overlay = document.createElement('div');
     overlay.className = 'zoom-overlay';

@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <noscript><style>.abstract[hidden], .bibtex[hidden] { display: block; } .pub-links li:has(.link-btn), .copy { display: none; } .pub-links li:has(+ li .link-btn)::after { content: none; }</style></noscript>
   <script>
     // Apply the saved theme (or the system one) before the page paints.
     (function () {
@@ -69,7 +70,7 @@
 
   <main class="container">
     <header class="post-header">
-      <h1 class="post-title"><b>Yuzhuo</b> Li</h1>
+      <h1 class="post-title">Yuzhuo Li</h1>
       <p class="desc">PhD Student, <a href="https://www.auckland.ac.nz/en/science/about-the-faculty/school-of-computer-science.html">School of Computer Science</a>, <a href="https://www.auckland.ac.nz/">University of Auckland</a></p>
     </header>
 
@@ -86,8 +87,8 @@
         <p>Before my PhD, I received my MSc in Computer Science with First Class Honours from the University of Auckland in 2025, and my BEng in Computer Science from Northeast Forestry University, China, in 2023.</p>
         <p>My research interests include:</p>
         <ul>
-          <li>Animal re-identification (ReID) from camera-trap images</li>
-          <li>Vision-language models and multimodal learning, for example using environmental metadata alongside images (<a href="/publications/#metawild">MetaWild</a>)</li>
+          <li>Animal re-identification (ReID)</li>
+          <li>Vision-language models and multimodal learning</li>
           <li>Domain generalisation</li>
           <li>Generative models for images and video</li>
         </ul>
@@ -109,9 +110,7 @@
       <div class="scroll-box news-box" tabindex="0" role="region" aria-label="News">
         <table>
           <tbody>
-            <tr><th scope="row">Jul, 2026</th><td>Graduate Teaching Assistant for <strong>COMPSCI 760</strong>: Advanced Topics in Machine Learning, Semester 2.</td></tr>
             <tr><th scope="row">Jun, 2026</th><td>One paper on attention fragmentation in multi-image LMMs is accepted by <strong>ECCV 2026</strong>.</td></tr>
-            <tr><th scope="row">Mar, 2026</th><td>Graduate Teaching Assistant for <strong>COMPSCI 713</strong>: Artificial Intelligence Fundamentals.</td></tr>
             <tr><th scope="row">Mar, 2026</th><td>Our paper <a href="/publications/#wacv26">CARE</a> (fine-grained animal re-identification) is presented at <strong>WACV 2026</strong> in Tucson, Arizona.</td></tr>
             <tr><th scope="row">Dec, 2025</th><td>Started my PhD at the University of Auckland, funded by an MBIE Smart Ideas scholarship.</td></tr>
             <tr><th scope="row">Jul, 2025</th><td><a href="/publications/#metawild">MetaWild</a> is accepted by <strong>ACM MM 2025</strong>.</td></tr>
@@ -126,26 +125,21 @@
     <section class="papers" aria-labelledby="papers-title">
       <h2 id="papers-title"><a href="/publications/">Papers</a> <a class="full-list" href="/publications/">(Full list)</a></h2>
       <div class="scroll-box papers-box" tabindex="0" role="region" aria-label="Papers">
-        <ol class="bibliography">
-
-          <li>
-            <div class="pub">
-              <div>
-                <abbr class="badge" title="European Conference on Computer Vision">ECCV</abbr>
-                <a class="preview" href="/assets/img/pubs/eccv26.webp"><img src="/assets/img/pubs/eccv26-thumb.webp" width="360" height="92" alt="Figure 1 of the ECCV 2026 paper" loading="lazy"></a>
-              </div>
-              <div>
-                <div class="title">Multiple Images Distract Large Multimodal Models via Attention Fragmentation</div>
-                <div class="author">Tingrui Qiao, Di Zhao, <em class="me">Yuzhuo Li</em>, Bo Pang, Caroline Walker, Chris Cunningham, and Yun Sing Koh</div>
-                <div class="periodical"><em>European Conference on Computer Vision (ECCV)</em>, 2026</div>
-                <div class="links">
-                  <button class="btn" type="button" data-panel="abs-eccv26-h" aria-expanded="false">Abs</button>
-                  <a class="btn" href="https://openreview.net/pdf?id=KFzVh70GhN">PDF</a>
-                  <a class="btn" href="https://openreview.net/forum?id=KFzVh70GhN">OpenReview</a>
-                  <button class="btn" type="button" data-panel="bib-eccv26-h" aria-expanded="false">Bib</button>
-                </div>
-                <div class="abstract" id="abs-eccv26-h" hidden><p>While many tasks require reasoning across multiple images, open-source Large Multimodal Models (LMMs) remain unreliable in these settings. We analyze multi-image LMMs and identify a phenomenon we term attention fragmentation: in each image, tokens at similar background locations act as attention sinks, absorbing disproportionate attention. Causal masking further skews this effect, as earlier images accumulate more sink attention than later images. Using an entropy score over per-image attention, we find that visual focus remains highly dispersed across images rather than isolating key evidence. By applying Pinsker's inequality, we establish a theoretical bound showing that this high-entropy dispersion, combined with stronger early-image sinks, strictly reduces the usable non-sink attention available to earlier images, providing a mechanistic link to image order sensitivity. Motivated by this diagnosis, we propose Attention Remasking (AR), a post-training edit that blocks sink keys and opens a sparse set of cross-image links, routing the recovered attention to task-relevant tokens. AR improves accuracy and reduces order sensitivity across multi-image benchmarks, narrowing the gap between open-source LMMs and leading commercial models.</p></div>
-                <div class="bibtex" id="bib-eccv26-h" hidden>
+        <ol class="pubs">
+          <li class="pub" id="eccv26">
+            <a class="pub-fig" href="/assets/img/pubs/eccv26.webp"><img src="/assets/img/pubs/eccv26-thumb.webp" width="360" height="92" alt="Figure 1 of the ECCV 2026 paper" loading="lazy"></a>
+            <div class="pub-body">
+              <div class="pub-title"><span class="venue-tag">ECCV 2026</span>Multiple Images Distract Large Multimodal Models via Attention Fragmentation</div>
+              <div class="pub-authors">Tingrui Qiao, Di Zhao, <strong class="me">Yuzhuo Li</strong>, Bo Pang, Caroline Walker, Chris Cunningham, Yun Sing Koh</div>
+              <div class="pub-venue"><em>European Conference on Computer Vision (ECCV)</em>, 2026</div>
+              <ul class="pub-links">
+                <li><button class="link-btn" type="button" data-panel="abs-eccv26" aria-expanded="false">Abstract</button></li>
+                <li><a href="https://openreview.net/pdf?id=KFzVh70GhN">PDF</a></li>
+                <li><a href="https://openreview.net/forum?id=KFzVh70GhN">OpenReview</a></li>
+                <li><button class="link-btn" type="button" data-panel="bib-eccv26" aria-expanded="false">BibTeX</button></li>
+              </ul>
+              <div class="abstract" id="abs-eccv26" hidden><p>While many tasks require reasoning across multiple images, open-source Large Multimodal Models (LMMs) remain unreliable in these settings. We analyze multi-image LMMs and identify a phenomenon we term attention fragmentation: in each image, tokens at similar background locations act as attention sinks, absorbing disproportionate attention. Causal masking further skews this effect, as earlier images accumulate more sink attention than later images. Using an entropy score over per-image attention, we find that visual focus remains highly dispersed across images rather than isolating key evidence. By applying Pinsker's inequality, we establish a theoretical bound showing that this high-entropy dispersion, combined with stronger early-image sinks, strictly reduces the usable non-sink attention available to earlier images, providing a mechanistic link to image order sensitivity. Motivated by this diagnosis, we propose Attention Remasking (AR), a post-training edit that blocks sink keys and opens a sparse set of cross-image links, routing the recovered attention to task-relevant tokens. AR improves accuracy and reduces order sensitivity across multi-image benchmarks, narrowing the gap between open-source LMMs and leading commercial models.</p></div>
+              <div class="bibtex" id="bib-eccv26" hidden>
 <pre>@inproceedings{qiao2026multiple,
   title     = {Multiple Images Distract Large Multimodal Models via Attention Fragmentation},
   author    = {Qiao, Tingrui and Zhao, Di and Li, Yuzhuo and Pang, Bo and Walker, Caroline and Cunningham, Chris and Koh, Yun Sing},
@@ -154,31 +148,26 @@
   publisher = {Springer Nature Switzerland},
   year      = {2026}
 }</pre>
-                  <button class="copy" type="button">Copy</button>
-                </div>
+                <button class="copy" type="button">Copy</button>
               </div>
             </div>
           </li>
 
-          <li>
-            <div class="pub">
-              <div>
-                <abbr class="badge" title="IEEE/CVF Winter Conference on Applications of Computer Vision">WACV</abbr>
-                <a class="preview" href="/assets/img/pubs/wacv26.webp"><img src="/assets/img/pubs/wacv26-thumb.webp" width="360" height="192" alt="Overview of the CARE framework" loading="lazy"></a>
-              </div>
-              <div>
-                <div class="title">Overcoming Fine-Grained Visual Challenges in Animal Re-Identification via Semantic Feature Alignment</div>
-                <div class="author">Yihao Wu, Di Zhao, <em class="me">Yuzhuo Li</em>, Matthew Alajas, Alistair S. Glen, Jingfeng Zhang, Gillian Dobbie, Daniel Wilson, and Yun Sing Koh</div>
-                <div class="periodical"><em>IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</em>, 2026</div>
-                <div class="links">
-                  <button class="btn" type="button" data-panel="abs-wacv26-h" aria-expanded="false">Abs</button>
-                  <a class="btn" href="https://openaccess.thecvf.com/content/WACV2026/papers/Wu_Overcoming_Fine-Grained_Visual_Challenges_in_Animal_Re-Identification_via_Semantic_Feature_WACV_2026_paper.pdf">PDF</a>
-                  <a class="btn" href="https://openaccess.thecvf.com/content/WACV2026/supplemental/Wu_Overcoming_Fine-Grained_Visual_WACV_2026_supplemental.pdf">Supp</a>
-                  <a class="btn" href="https://ml4sg.auckland.ac.nz/animal-re-identification-model/">Website</a>
-                  <button class="btn" type="button" data-panel="bib-wacv26-h" aria-expanded="false">Bib</button>
-                </div>
-                <div class="abstract" id="abs-wacv26-h" hidden><p>Identifying individual animals at different points in space and time is vital for effective wildlife monitoring and biodiversity conservation. While existing computer vision methods have shown promise in re-identifying animals, their capability in Animal Re-Identification (Animal ReID) remains restricted by the inherent visual variations, specifically high intra- and low inter-identity variations. High intra-identity variations refer to high visual diversity within the same individual due to pose or form changes and occlusions, and low inter-identity variations refer to subtle visual differences between distinct individuals due to fine-grained appearances. To address these challenges, we propose the Clip-based Animal RE-identification (CARE) framework, which leverages the image-conditioned textual description generation and individual-level semantic feature alignment, mitigating the negative impacts of visual variations in Animal ReID. Crucially, we have packaged CARE into a stand-alone toolkit and piloted it with stakeholders, facilitating real-world wildlife monitoring for biodiversity conservation. Extensive experiments on benchmark and in-the-wild datasets further demonstrate that CARE consistently outperforms state-of-the-art methods, validating its effectiveness in Animal ReID.</p></div>
-                <div class="bibtex" id="bib-wacv26-h" hidden>
+          <li class="pub" id="wacv26">
+            <a class="pub-fig" href="/assets/img/pubs/wacv26.webp"><img src="/assets/img/pubs/wacv26-thumb.webp" width="360" height="192" alt="Overview of the CARE framework" loading="lazy"></a>
+            <div class="pub-body">
+              <div class="pub-title"><span class="venue-tag">WACV 2026</span>Overcoming Fine-Grained Visual Challenges in Animal Re-Identification via Semantic Feature Alignment</div>
+              <div class="pub-authors">Yihao Wu, Di Zhao, <strong class="me">Yuzhuo Li</strong>, Matthew Alajas, Alistair S. Glen, Jingfeng Zhang, Gillian Dobbie, Daniel Wilson, Yun Sing Koh</div>
+              <div class="pub-venue"><em>IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</em>, 2026</div>
+              <ul class="pub-links">
+                <li><button class="link-btn" type="button" data-panel="abs-wacv26" aria-expanded="false">Abstract</button></li>
+                <li><a href="https://openaccess.thecvf.com/content/WACV2026/papers/Wu_Overcoming_Fine-Grained_Visual_Challenges_in_Animal_Re-Identification_via_Semantic_Feature_WACV_2026_paper.pdf">PDF</a></li>
+                <li><a href="https://openaccess.thecvf.com/content/WACV2026/supplemental/Wu_Overcoming_Fine-Grained_Visual_WACV_2026_supplemental.pdf">Supplementary</a></li>
+                <li><a href="https://ml4sg.auckland.ac.nz/animal-re-identification-model/">Project</a></li>
+                <li><button class="link-btn" type="button" data-panel="bib-wacv26" aria-expanded="false">BibTeX</button></li>
+              </ul>
+              <div class="abstract" id="abs-wacv26" hidden><p>Identifying individual animals at different points in space and time is vital for effective wildlife monitoring and biodiversity conservation. While existing computer vision methods have shown promise in re-identifying animals, their capability in Animal Re-Identification (Animal ReID) remains restricted by the inherent visual variations, specifically high intra- and low inter-identity variations. High intra-identity variations refer to high visual diversity within the same individual due to pose or form changes and occlusions, and low inter-identity variations refer to subtle visual differences between distinct individuals due to fine-grained appearances. To address these challenges, we propose the Clip-based Animal RE-identification (CARE) framework, which leverages the image-conditioned textual description generation and individual-level semantic feature alignment, mitigating the negative impacts of visual variations in Animal ReID. Crucially, we have packaged CARE into a stand-alone toolkit and piloted it with stakeholders, facilitating real-world wildlife monitoring for biodiversity conservation. Extensive experiments on benchmark and in-the-wild datasets further demonstrate that CARE consistently outperforms state-of-the-art methods, validating its effectiveness in Animal ReID.</p></div>
+              <div class="bibtex" id="bib-wacv26" hidden>
 <pre>@inproceedings{Wu_2026_WACV,
   title     = {Overcoming Fine-Grained Visual Challenges in Animal Re-Identification via Semantic Feature Alignment},
   author    = {Wu, Yihao and Zhao, Di and Li, Yuzhuo and Alajas, Matthew and Glen, Alistair S. and Zhang, Jingfeng and Dobbie, Gillian and Wilson, Daniel and Koh, Yun Sing},
@@ -187,33 +176,28 @@
   pages     = {371--381},
   year      = {2026}
 }</pre>
-                  <button class="copy" type="button">Copy</button>
-                </div>
+                <button class="copy" type="button">Copy</button>
               </div>
             </div>
           </li>
 
-          <li>
-            <div class="pub">
-              <div>
-                <abbr class="badge" title="ACM International Conference on Multimedia">ACM MM</abbr>
-                <a class="preview" href="/assets/img/pubs/metawild.webp"><img src="/assets/img/pubs/metawild-thumb.webp" width="360" height="138" alt="The Meta-Feature Adapter from MetaWild" loading="lazy"></a>
-              </div>
-              <div>
-                <div class="title">MetaWild: A Multimodal Dataset for Animal Re-Identification with Environmental Metadata</div>
-                <div class="author"><em class="me">Yuzhuo Li</em>*, Di Zhao*, Tingrui Qiao, Yihao Wu, Bo Pang, and Yun Sing Koh</div>
-                <div class="periodical"><em>ACM International Conference on Multimedia (ACM MM)</em>, 2025</div>
-                <div class="links">
-                  <button class="btn" type="button" data-panel="abs-metawild-h" aria-expanded="false">Abs</button>
-                  <a class="btn" href="https://arxiv.org/abs/2501.13368">arXiv</a>
-                  <a class="btn" href="https://doi.org/10.1145/3746027.3758249">HTML</a>
-                  <a class="btn" href="https://github.com/Jim-lyz1024/MetaWild">Code</a>
-                  <a class="btn" href="https://huggingface.co/datasets/lucas0927/MetaWild">Dataset</a>
-                  <a class="btn" href="https://jim-lyz1024.github.io/MetaWild/">Website</a>
-                  <button class="btn" type="button" data-panel="bib-metawild-h" aria-expanded="false">Bib</button>
-                </div>
-                <div class="abstract" id="abs-metawild-h" hidden><p>Identifying individual animals within large wildlife populations is essential for effective wildlife monitoring and conservation efforts. Recent advancements in computer vision have shown promise in animal re-identification (Animal ReID) by leveraging data from camera traps. However, existing Animal ReID datasets rely exclusively on visual data, overlooking environmental metadata that ecologists have identified as highly correlated with animal behavior and identity, such as temperature and circadian rhythms. Moreover, the emergence of multimodal models capable of jointly processing visual and textual data presents new opportunities for Animal ReID, but existing datasets fail to leverage these models' text-processing capabilities, limiting their full potential. Additionally, to facilitate the use of metadata in existing ReID methods, we propose the Meta-Feature Adapter (MFA), a lightweight module that can be incorporated into existing vision-language model (VLM)-based Animal ReID methods, allowing ReID models to leverage both environmental metadata and visual information to improve ReID performance. Experiments on MetaWild show that combining baseline ReID models with MFA to incorporate metadata consistently improves performance compared to using visual information alone, validating the effectiveness of incorporating metadata in re-identification. We hope that our proposed dataset can inspire further exploration of multimodal approaches for Animal ReID.</p></div>
-                <div class="bibtex" id="bib-metawild-h" hidden>
+          <li class="pub" id="metawild">
+            <a class="pub-fig" href="/assets/img/pubs/metawild.webp"><img src="/assets/img/pubs/metawild-thumb.webp" width="360" height="138" alt="The Meta-Feature Adapter from MetaWild" loading="lazy"></a>
+            <div class="pub-body">
+              <div class="pub-title"><span class="venue-tag">ACM MM 2025</span>MetaWild: A Multimodal Dataset for Animal Re-Identification with Environmental Metadata</div>
+              <div class="pub-authors"><strong class="me">Yuzhuo Li</strong>*, Di Zhao*, Tingrui Qiao, Yihao Wu, Bo Pang, Yun Sing Koh</div>
+              <div class="pub-venue"><em>ACM International Conference on Multimedia (ACM MM)</em>, 2025</div>
+              <ul class="pub-links">
+                <li><button class="link-btn" type="button" data-panel="abs-metawild" aria-expanded="false">Abstract</button></li>
+                <li><a href="https://doi.org/10.1145/3746027.3758249">Paper</a></li>
+                <li><a href="https://arxiv.org/abs/2501.13368">arXiv</a></li>
+                <li><a href="https://github.com/Jim-lyz1024/MetaWild">Code</a></li>
+                <li><a href="https://huggingface.co/datasets/lucas0927/MetaWild">Dataset</a></li>
+                <li><a href="https://jim-lyz1024.github.io/MetaWild/">Project</a></li>
+                <li><button class="link-btn" type="button" data-panel="bib-metawild" aria-expanded="false">BibTeX</button></li>
+              </ul>
+              <div class="abstract" id="abs-metawild" hidden><p>Identifying individual animals within large wildlife populations is essential for effective wildlife monitoring and conservation efforts. Recent advancements in computer vision have shown promise in animal re-identification (Animal ReID) by leveraging data from camera traps. However, existing Animal ReID datasets rely exclusively on visual data, overlooking environmental metadata that ecologists have identified as highly correlated with animal behavior and identity, such as temperature and circadian rhythms. Moreover, the emergence of multimodal models capable of jointly processing visual and textual data presents new opportunities for Animal ReID, but existing datasets fail to leverage these models' text-processing capabilities, limiting their full potential. Additionally, to facilitate the use of metadata in existing ReID methods, we propose the Meta-Feature Adapter (MFA), a lightweight module that can be incorporated into existing vision-language model (VLM)-based Animal ReID methods, allowing ReID models to leverage both environmental metadata and visual information to improve ReID performance. Experiments on MetaWild show that combining baseline ReID models with MFA to incorporate metadata consistently improves performance compared to using visual information alone, validating the effectiveness of incorporating metadata in re-identification. We hope that our proposed dataset can inspire further exploration of multimodal approaches for Animal ReID.</p></div>
+              <div class="bibtex" id="bib-metawild" hidden>
 <pre>@inproceedings{li2025metawild,
   title     = {MetaWild: A Multimodal Dataset for Animal Re-Identification with Environmental Metadata},
   author    = {Li, Yuzhuo and Zhao, Di and Qiao, Tingrui and Wu, Yihao and Pang, Bo and Koh, Yun Sing},
@@ -221,38 +205,31 @@
   pages     = {13009--13015},
   year      = {2025}
 }</pre>
-                  <button class="copy" type="button">Copy</button>
-                </div>
+                <button class="copy" type="button">Copy</button>
               </div>
             </div>
           </li>
 
-          <li>
-            <div class="pub">
-              <div>
-                <abbr class="badge" title="Master's thesis">Thesis</abbr>
-                <a class="preview" href="/assets/img/pubs/thesis.webp"><img src="/assets/img/pubs/thesis-thumb.webp" width="360" height="124" alt="Framework diagram from the MSc thesis" loading="lazy"></a>
-              </div>
-              <div>
-                <div class="title">Improving Domain Generalisation with Vision-Language Integration</div>
-                <div class="author"><em class="me">Yuzhuo Li</em></div>
-                <div class="periodical"><em>MSc Thesis, The University of Auckland</em>, 2025</div>
-                <div class="links">
-                  <button class="btn" type="button" data-panel="bib-thesis-h" aria-expanded="false">Bib</button>
-                </div>
-                <div class="bibtex" id="bib-thesis-h" hidden>
+          <li class="pub" id="thesis">
+            <a class="pub-fig" href="/assets/img/pubs/thesis.webp"><img src="/assets/img/pubs/thesis-thumb.webp" width="360" height="124" alt="Framework diagram from the MSc thesis" loading="lazy"></a>
+            <div class="pub-body">
+              <div class="pub-title"><span class="venue-tag">MSc Thesis</span>Improving Domain Generalisation with Vision-Language Integration</div>
+              <div class="pub-authors"><strong class="me">Yuzhuo Li</strong></div>
+              <div class="pub-venue"><em>MSc Thesis, The University of Auckland</em>, 2025</div>
+              <ul class="pub-links">
+                <li><button class="link-btn" type="button" data-panel="bib-thesis" aria-expanded="false">BibTeX</button></li>
+              </ul>
+              <div class="bibtex" id="bib-thesis" hidden>
 <pre>@mastersthesis{li2025improving,
   title  = {Improving Domain Generalisation with Vision-Language Integration},
   author = {Li, Yuzhuo},
   school = {The University of Auckland},
   year   = {2025}
 }</pre>
-                  <button class="copy" type="button">Copy</button>
-                </div>
+                <button class="copy" type="button">Copy</button>
               </div>
             </div>
           </li>
-
         </ol>
       </div>
     </section>

@@ -1,18 +1,18 @@
 /* Homepage of Yuzhuo Li.
-   Colours follow the two al-folio schemes: light (white/black) and dark (#1c1c1d/#e8e8e8).
+   Two schemes: light (white/black) and dark (#1c1c1d/#e8e8e8). The accent is University of Auckland blue.
    The theme is set on <html data-theme> by the inline script in each page's <head>. */
 
 :root {
   --bg: #fff;
   --text: #000;
   --text-muted: #666;
-  --text-faint: #c9c9c9;
-  --theme: rgba(42, 39, 220, 0.82);
-  --hover: #b509ac;
+  --accent: #0a5ea8;
+  --accent-hover: #00467f;
+  --tag-bg: #00467f;
   --divider: rgba(0, 0, 0, 0.1);
   --box-border: #ddd;
-  --code-bg: rgba(181, 9, 172, 0.05);
-  --abbr: rgba(42, 39, 220, 0.42);
+  --code-bg: #f5f7fa;
+  --figure-bg: #fff;
   --footer-bg: #1c1c1d;
   --footer-text: #e8e8e8;
   --shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -27,12 +27,13 @@ html[data-theme="dark"] {
   --bg: #1c1c1d;
   --text: #e8e8e8;
   --text-muted: #a3a3a3;
-  --text-faint: #48484c;
-  --theme: #2698ba;
-  --hover: #2698ba;
+  --accent: #6cb4ee;
+  --accent-hover: #9ccdf5;
+  --tag-bg: #1d5f99;
   --divider: #424246;
   --box-border: #424246;
-  --code-bg: #2c3237;
+  --code-bg: #26292d;
+  --figure-bg: #f2f2f2;
   --footer-bg: #e8e8e8;
   --footer-text: #1c1c1d;
   --scroll-thumb: #55555a;
@@ -46,12 +47,13 @@ html[data-theme="dark"] {
     --bg: #1c1c1d;
     --text: #e8e8e8;
     --text-muted: #a3a3a3;
-    --text-faint: #48484c;
-    --theme: #2698ba;
-    --hover: #2698ba;
+    --accent: #6cb4ee;
+    --accent-hover: #9ccdf5;
+    --tag-bg: #1d5f99;
     --divider: #424246;
     --box-border: #424246;
-    --code-bg: #2c3237;
+    --code-bg: #26292d;
+    --figure-bg: #f2f2f2;
     --footer-bg: #e8e8e8;
     --footer-text: #1c1c1d;
     --scroll-thumb: #55555a;
@@ -83,19 +85,19 @@ body {
 }
 
 a {
-  color: var(--theme);
+  color: var(--accent);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--hover);
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
 b, strong { font-weight: 500; }
 
 :focus-visible {
-  outline: 2px solid var(--theme);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -145,12 +147,10 @@ b, strong { font-weight: 500; }
 .brand {
   margin-right: auto;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text);
   white-space: nowrap;
 }
-
-.brand b { font-weight: 700; }
 
 .brand:hover {
   color: var(--text);
@@ -171,7 +171,7 @@ b, strong { font-weight: 500; }
 
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-  color: var(--theme);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -189,7 +189,7 @@ b, strong { font-weight: 500; }
   cursor: pointer;
 }
 
-.icon-btn:hover { color: var(--theme); }
+.icon-btn:hover { color: var(--accent); }
 
 .theme-toggle { margin-left: 6px; }
 
@@ -236,8 +236,6 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   line-height: 1.2;
 }
 
-.post-title b { font-weight: 700; }
-
 .post-description {
   margin: 4px 0 0;
   font-size: 0.875rem;
@@ -258,10 +256,10 @@ h2 a:hover { color: inherit; }
 h2 .full-list {
   margin-left: 8px;
   font-size: 0.6em;
-  color: var(--theme);
+  color: var(--accent);
 }
 
-h2 .full-list:hover { color: var(--hover); }
+h2 .full-list:hover { color: var(--accent-hover); }
 
 /* ---------- About ---------- */
 
@@ -312,7 +310,7 @@ h2 .full-list:hover { color: var(--hover); }
   line-height: 1;
 }
 
-.social a:hover { color: var(--theme); }
+.social a:hover { color: var(--accent); }
 
 /* ---------- Scrolling boxes (News, Papers) ---------- */
 
@@ -360,86 +358,99 @@ h2 .full-list:hover { color: var(--hover); }
 .papers-box {
   max-height: 420px;
   margin-top: 15px;
-  padding: 10px 10px 0;
+  padding: 14px 14px 0;
   border: 1px solid var(--box-border);
 }
 
 /* ---------- Publication entries ---------- */
 
-.bibliography {
+.pubs {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.bibliography > li { margin-bottom: 20px; }
-
 .pub {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.pub-fig {
+  flex: none;
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  column-gap: 30px;
-}
-
-.badge {
-  display: block;
-  padding: 3px 5px;
+  place-items: center;
+  width: 180px;
+  height: 100px;
+  padding: 6px;
+  border: 1px solid var(--box-border);
   border-radius: 4px;
-  background: var(--abbr);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  text-decoration: none;
-}
-
-.preview {
-  display: block;
-  margin-top: 8px;
+  background: var(--figure-bg);
   cursor: zoom-in;
 }
 
-.preview img {
+.pub-fig img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  border-radius: 4px;
-  background: #fff;
-  box-shadow: var(--shadow);
 }
 
-.pub .title { font-weight: 400; }
-
-.pub .author .me {
-  border-bottom: 1px solid;
-  font-style: normal;
+.pub-body {
+  flex: 1;
+  min-width: 0;
 }
 
-.pub .links {
+.pub-title { font-weight: 500; }
+
+.venue-tag {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0 6px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.pub-authors .me { font-weight: 500; }
+
+.pub-venue { color: var(--text-muted); }
+
+.pub-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.btn {
-  display: inline-block;
-  padding: 3px 14px;
-  border: 1px solid var(--text);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--text);
-  font: 400 0.66rem/1.6 "Roboto", sans-serif;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+/* The separator trails each item, so a wrapped row never starts with a slash. */
+.pub-links li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.5em;
+  color: var(--text-muted);
+}
+
+.link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
   cursor: pointer;
 }
 
-.btn:hover,
-.btn[aria-expanded="true"] {
-  border-color: var(--theme);
-  color: var(--theme);
-  text-decoration: none;
+.link-btn:hover,
+.link-btn[aria-expanded="true"] {
+  color: var(--accent-hover);
+  text-decoration: underline;
 }
 
 .abstract,
@@ -448,8 +459,7 @@ h2 .full-list:hover { color: var(--hover); }
 .abstract p {
   margin: 0;
   padding: 8px 12px;
-  border: 1px dashed var(--text-muted);
-  border-radius: 4px;
+  border-left: 3px solid var(--box-border);
   font-size: 0.95rem;
 }
 
@@ -480,32 +490,27 @@ h2 .full-list:hover { color: var(--hover); }
 
 .copy:hover { color: var(--text); }
 
-.pub-note {
-  margin: 0 0 8px;
-  font-size: 0.875rem;
-  color: var(--text-muted);
+/* Year headings on the full list */
+h2.year {
+  margin: 36px 0 18px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--divider);
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
-/* Year headings on the full list, as in al-folio */
-h2.year {
-  margin: 32px 0 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--divider);
-  color: var(--text-faint);
-  text-align: right;
-}
+.post-header + h2.year { margin-top: 8px; }
 
 @media (max-width: 575.98px) {
-  .pub { grid-template-columns: minmax(0, 1fr); }
-
-  .badge {
-    display: inline-block;
-    min-width: 72px;
+  .pub {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .preview {
-    max-width: 260px;
-    margin-bottom: 8px;
+  .pub-fig {
+    width: 100%;
+    max-width: 320px;
+    height: 150px;
   }
 }
 
@@ -610,7 +615,7 @@ h2.year {
 }
 
 @media print {
-  .navbar, .footer, .links, .theme-toggle, .zoom-overlay { display: none !important; }
+  .navbar, .footer, .pub-links, .theme-toggle, .zoom-overlay { display: none !important; }
 
   body { padding: 0; }
 
