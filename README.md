@@ -25,6 +25,7 @@ the files as they are. Light and dark schemes; the accent colour is University o
   and matching `abs-<id>` / `bib-<id>` panel ids (each `data-panel` button points at its panel).
   The figure is `assets/img/pubs/<name>.webp` (shown on click) plus `<name>-thumb.webp` (360 px wide).
 - **Navigation:** the menu is repeated in every page's `<header class="navbar">`.
+- **New page:** also add its URL to `sitemap.xml` (search engines read it via `robots.txt`).
 
 All links use root paths (`/assets/...`, `/cv/`), so preview through a local server rather than
 opening the files directly:

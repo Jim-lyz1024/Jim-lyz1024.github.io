@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jim-lyz1024.github.io/sitemap.xml
