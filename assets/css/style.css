@@ -1,0 +1,438 @@
+/* Homepage of Yuzhuo Li.
+   All colours are the custom properties below; dark mode follows the visitor's system setting. */
+
+:root {
+  --paper: #fbfaf6;
+  --ink: #1c1c1a;
+  --ink-soft: #3b3a36;
+  --muted: #6c6a62;
+  --rule: #e3e0d6;
+  --accent: #1f5f45;
+  --accent-line: rgba(31, 95, 69, 0.35);
+  --code-bg: #f3f1ea;
+  --select: rgba(31, 95, 69, 0.16);
+
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, Cambria, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Source Sans Pro", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --zh: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --mono: ui-monospace, "Cascadia Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 46rem;  /* page width, padding included */
+  --gutter: 7rem;    /* the left column that holds dates and venues */
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151513;
+    --ink: #e7e5de;
+    --ink-soft: #cdcac1;
+    --muted: #9b988e;
+    --rule: #2e2d29;
+    --accent: #8fcfaa;
+    --accent-line: rgba(143, 207, 170, 0.4);
+    --code-bg: #1d1d1a;
+    --select: rgba(143, 207, 170, 0.22);
+  }
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  font-variant-numeric: oldstyle-nums;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--select); }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 0.15s;
+}
+
+a:hover { text-decoration-color: currentColor; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  padding: 0.4rem 0.7rem;
+  background: var(--paper);
+}
+
+/* ---------- Page frame ---------- */
+
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem 1.4rem;
+  padding-top: 1.6rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.topnav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.topnav a:hover { color: var(--ink); }
+
+section { scroll-margin-top: 1.5rem; }
+
+section + section {
+  margin-top: 3.25rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+h2 {
+  margin: 0 0 1.1rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+.section-note {
+  margin: -0.55rem 0 1.2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Intro ---------- */
+
+.intro { padding-top: 3.5rem; }
+
+.intro::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.portrait {
+  float: right;
+  width: 11.5rem;
+  margin: 0.4rem 0 1rem 2.25rem;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+
+h1 .zh {
+  margin-left: 0.12em;  /* the space before it does most of the work, so a wrapped line gets no visible indent */
+  font-family: var(--zh);
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.role {
+  margin: 0.6rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.95rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.bio { margin-top: 1.8rem; }
+
+.bio p { margin: 0 0 1em; }
+
+.bio p:last-child { margin-bottom: 0; }
+
+/* ---------- Dated lists: news, publications, CV ---------- */
+
+.entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  column-gap: 1.25rem;
+  align-items: baseline;
+  padding: 0.38rem 0;
+}
+
+.entry p { margin: 0; }
+
+.when {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--muted);
+}
+
+.when .venue { color: var(--ink-soft); }
+
+/* ---------- Publications ---------- */
+
+.pub { padding: 1rem 0; }
+
+.pub + .pub { border-top: 1px dotted var(--rule); }
+
+.pub-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.08rem;
+  line-height: 1.38;
+}
+
+.pub-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.pub-title a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+}
+
+.authors,
+.venue-full,
+.summary { font-size: 0.98rem; }
+
+.authors { color: var(--ink-soft); }
+
+.authors .me {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pub .venue-full {
+  margin-top: 0.1rem;
+  color: var(--muted);
+}
+
+.pub .summary {
+  margin-top: 0.45rem;
+  color: var(--ink-soft);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+/* The separator trails each item, so a wrapped row never starts with a slash. */
+.links li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.5em;
+  color: var(--muted);
+  opacity: 0.55;
+}
+
+.bib-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.bib-toggle:hover,
+.bib-toggle[aria-expanded="true"] { text-decoration-color: currentColor; }
+
+.bib {
+  position: relative;
+  margin-top: 0.75rem;
+}
+
+.bib pre {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  border-left: 2px solid var(--accent-line);
+  background: var(--code-bg);
+  color: var(--ink-soft);
+  font: 0.78rem/1.55 var(--mono);
+  white-space: pre;
+}
+
+.bib-copy {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--muted);
+  font: 500 0.75rem var(--sans);
+  cursor: pointer;
+}
+
+.bib-copy:hover { color: var(--ink); }
+
+/* ---------- CV ---------- */
+
+.cv-head {
+  margin: 1.7rem 0 0.35rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+h2 + .cv-head { margin-top: 0; }
+
+.detail {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin-top: 4rem;
+  padding: 1.4rem 0 2.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+}
+
+.footer p { margin: 0; }
+
+.footer a { color: inherit; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 36rem) {
+  :root { --gutter: 5.4rem; }
+
+  body { font-size: 1rem; }
+
+  .page { padding: 0 1.25rem; }
+
+  .topnav {
+    justify-content: flex-start;
+    gap: 0.2rem 1.15rem;
+    padding-top: 1.1rem;
+  }
+
+  .intro { padding-top: 2rem; }
+
+  /* Beside the text the column gets too narrow on a phone, so the photo sits above the name. */
+  .portrait {
+    float: none;
+    display: block;
+    width: 8.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  h1 { font-size: 2rem; }
+
+  .role { font-size: 1rem; }
+
+  .entry { column-gap: 1rem; }
+
+  /* Venue labels are too wide for the narrow gutter, so publications stack. */
+  .pub { grid-template-columns: minmax(0, 1fr); }
+
+  .pub .when { margin-bottom: 0.2rem; }
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  .topnav, .skip, .bib-toggle, .bib-copy { display: none; }
+
+  body { font-size: 10.5pt; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .pub { break-inside: avoid; }
+}
