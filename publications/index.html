@@ -52,6 +52,34 @@
     <!-- Newest year first. To add a paper, copy a whole <li> and give its ids a new suffix. -->
     <h2 class="year">2026</h2>
     <ol class="pubs">
+      <li class="pub" id="neurips26">
+        <a class="pub-fig" href="/assets/img/pubs/neurips26.webp"><img src="/assets/img/pubs/neurips26-thumb.webp" width="360" height="150" alt="Figure 1 of the NeurIPS 2026 paper" loading="lazy"></a>
+        <div class="pub-body">
+          <div class="pub-title"><span class="venue-tag">NeurIPS 2026</span>Generating the Wild: Individual-Consistent Image-to-Video Generation for Wildlife</div>
+          <div class="pub-authors"><strong class="me">Yuzhuo Li</strong>, Di Zhao, Xinyu Zhang, Daniel Wilson, Yun Sing Koh</div>
+          <div class="pub-venue"><em>Advances in Neural Information Processing Systems (NeurIPS)</em>, 2026</div>
+          <ul class="pub-links">
+            <li><button class="link-btn" type="button" data-panel="abs-neurips26" aria-expanded="false">Abstract</button></li>
+            <li><a href="https://openreview.net/pdf?id=Twfrs5sTBH">PDF</a></li>
+            <li><a href="https://openreview.net/forum?id=Twfrs5sTBH">OpenReview</a></li>
+            <li><a href="https://arxiv.org/abs/2610.05587">arXiv</a></li>
+            <li><a href="https://github.com/ML-4-SocialGood/WildIcon">Code</a></li>
+            <li><a href="https://ml-4-socialgood.github.io/WildIcon/">Project</a></li>
+            <li><button class="link-btn" type="button" data-panel="bib-neurips26" aria-expanded="false">BibTeX</button></li>
+          </ul>
+          <div class="abstract" id="abs-neurips26" hidden><p>Individual-level wildlife identification often suffers from data scarcity, as varying observations of the same animal under diverse poses, viewpoints, and motions are rarely available. Image-to-video (I2V) generation offers a promising way to mitigate this limitation by synthesizing additional observations from a single reference image. However, existing I2V models mainly emphasize global layout, semantics, and motion, and therefore often fail to preserve fine-grained local appearance cues that distinguish one wildlife individual from another, such as fur texture, stripe boundaries, spot configurations, and contour transitions. We observe that these identity-critical cues are closely related to high-frequency information. To address this challenge, we propose WildIcon, a high-frequency-guided I2V framework for wildlife individual consistency. Specifically, WildIcon introduces a frequency-aware identity encoding branch that extracts individual-specific high-frequency cues from the reference image. Combined with isolated foreground information, the resulting identity tokens are then injected into cross-attention blocks as identity conditioning. Building on a frozen backbone with lightweight identity adaptation, WildIcon preserves fine-grained identity cues visible in the reference image while retaining the motion controllability and semantic fidelity of the base I2V model. In addition, to support the training and evaluation of wildlife individual-consistent I2V, we construct WildlifeVid, a wildlife-centric video dataset with high-quality, temporally coherent clips and individual-level identity labels. Experiments on I2V generation and downstream animal re-identification (ReID) show that WildIcon achieves stronger individual consistency than existing baselines, and that its filtered outputs can serve as useful candidate training augmentations for downstream ReID.</p></div>
+          <div class="bibtex" id="bib-neurips26" hidden>
+<pre>@article{li2026generating,
+  title   = {Generating the Wild: Individual-Consistent Image-to-Video Generation for Wildlife},
+  author  = {Li, Yuzhuo and Zhao, Di and Zhang, Xinyu and Wilson, Daniel and Koh, Yun Sing},
+  journal = {arXiv preprint arXiv:2610.05587},
+  year    = {2026}
+}</pre>
+            <button class="copy" type="button">Copy</button>
+          </div>
+        </div>
+      </li>
+
       <li class="pub" id="eccv26">
         <a class="pub-fig" href="/assets/img/pubs/eccv26.webp"><img src="/assets/img/pubs/eccv26-thumb.webp" width="360" height="92" alt="Figure 1 of the ECCV 2026 paper" loading="lazy"></a>
         <div class="pub-body">
